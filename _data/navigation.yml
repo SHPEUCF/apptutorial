@@ -1,0 +1,15 @@
+main:
+  - title: "App Guide"
+    url: /app-guide/
+  - title: "Wiki"
+    url: /wiki/
+  - title: "GitHub"
+    url: //github.com/shpeucf
+  - title: "About"
+    url: /about/
+
+docs:
+  - title: Home
+    url: /
+  - title: Assignments
+    url: /assignments
