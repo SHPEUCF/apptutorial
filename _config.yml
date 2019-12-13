@@ -1,27 +1,18 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "SHPE UCF Tech Website"
+title: "Tech Website"
 subtitle: "SHPE UCF"
 email: tech.shpeucf@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Site for members to learn (hands-on) about react-native and all its features.
 logo: "/assets/images/shpe-logo.png"
-masthead_title: "Tech Website"
+# masthead_title: "Tech Website"
 minimal_mistakes_skin: dark
 search: true
+github: [metadata]
 
 # Build settings
 markdown: kramdown
