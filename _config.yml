@@ -6,19 +6,20 @@
 title: "Tech Website"
 subtitle: "SHPE UCF"
 email: tech.shpeucf@gmail.com
+repository: "shpeucf/shpeucf.github.io"
 description: >- # this means to ignore newlines until "baseurl:"
   Site for members to learn (hands-on) about react-native and all its features.
 logo: "/assets/images/shpe-logo.png"
 # masthead_title: "Tech Website"
-minimal_mistakes_skin: dark
 search: true
-github: [metadata]
+timezone: America/New_York
+breadcrumbs: true
 
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
-repository: "shpeucf/shpeucf.github.io"
-timezone: America/New_York
+minimal_mistakes_skin: dark
+github: [metadata]
 
 include:
 - _pages
@@ -45,7 +46,7 @@ footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/shpeucf"
+      url: "https://github.com/shpeucf/shpeucf.github.io"
 
 defaults:
   # _pages
