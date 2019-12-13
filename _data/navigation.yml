@@ -1,15 +1,28 @@
 main:
-  - title: "App Guide"
+  - title: "Home"
+    url: /
+  - title: "Guide"
     url: /app-guide/
-  - title: "Wiki"
-    url: /wiki/
-  - title: "GitHub"
-    url: //github.com/shpeucf
+  - title: "Resources"
+    url: /resources/
   - title: "About"
     url: /about/
 
 docs:
-  - title: Home
-    url: /
-  - title: Assignments
-    url: /assignments
+  - title: "Getting Started"
+  - title: "Assignments"
+    children:
+      - title: "Part 1"
+        url: /assignments/part-1
+      - title: "Part 2"
+        url: /assignments/part-2
+      - title: "Part 3"
+        url: /assignments/part-3
+      - title: "Part 4"
+        url: /assignments/part-4
+  - title: "Extras"
+    children:
+      - title: "GitHub"
+        url: //github.com/shpeucf
+      - title: "SHPE UCF Website"
+        url: //shpeucf.com
