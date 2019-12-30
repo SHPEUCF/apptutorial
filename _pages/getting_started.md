@@ -2,7 +2,7 @@
 permalink: /getting-started/
 title: "Getting Started"
 toc: true
-toc-sticky: true
+toc_sticky: true
 ---
 
 ## Environment
