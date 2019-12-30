@@ -44,6 +44,9 @@ plugins:
 
 footer:
   links:
+    - label: "Archives"
+      icon: "fas fa-fw fa-archive"
+      url: "/archives"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/shpeucf/shpeucf.github.io"

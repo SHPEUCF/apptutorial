@@ -25,5 +25,7 @@ docs:
     children:
       - title: "GitHub"
         url: //github.com/shpeucf
+      - title: "Archives"
+        url: /archives
       - title: "SHPE UCF Website"
         url: //shpeucf.com
