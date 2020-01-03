@@ -51,7 +51,7 @@ Run your emulator to see what react-native cli made. Once there, you can edit `A
 17 export default App;
 ```
 
-This is the general structure your files will have in react-native...
+This is the general structure your files will have in react-native:
 * **line 1**: import statement to use the React library
 * **line 2**: import the React component to be extended. This is so we can write `extends Component` instead of `extends React.Component`.
 
@@ -127,7 +127,7 @@ However, this can get messy. What if I want to add more styling?
   </Text>
 ...
 ```
-**Note:** This is slighly different from CSS3, if you are familiar with it. Check out fontWeight (instead of font-weight), for example. See [React Native Style](https://facebook.github.io/react-native/docs/style) for more.
+**Note:** This is slighly different from CSS, if you are familiar with it. Check out fontWeight (instead of font-weight), for example. See [React Native Style](https://facebook.github.io/react-native/docs/style) for more.
 {: .notice--info}
 
 And then imagine this being repeated for every other line of code that you write. Not only will you be duplicating styling most of time, but it will be way too clutered for you to be able to follow your code after you write it.
@@ -230,7 +230,7 @@ This is actually not the correct way of doing it, but we'll do it like this for 
 {: .notice--info}
 
 ## Exercise 4
-**TLDR;** ...
+**TLDR;** Style the rest of the Dashboard.
 {: .notice}
 
 Let's continue finishing up the Dashboard. Now that we did one part, the rest is pretty similar.
