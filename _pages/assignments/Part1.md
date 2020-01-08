@@ -8,7 +8,7 @@ toc_sticky: true
 If you are here, you already have your environment set up and can start coding. If you don't know what I'm talking about, check [Getting Started](/getting-started).
 {: .notice--danger}
 
-In Part 1, we will start with making our first screen. Here, multiple things will be introduced: components, 
+In Part 1, we will start with making our first screen: the Dashboard. Here, multiple things will be introduced: components, ... Throughout the exercises, you will build individual parts of the screen.
 
 ## Exercise 1
 **TLDR;** Create a react-native app and make a custom screen (this will be explained later).
@@ -71,7 +71,7 @@ We will go more in-depth on imports/exports later, but you are free to search fo
 * **line 17**: exports the current class to be used in other parts, such as `index.js`.
 
 **What are components?**  
-Components let you split the [User Interface] into independent, reusable pieces, and think about each piece in isolation." _from [ReactJS](https://reactjs.org/docs/components-and-props.html)_
+"Components let you split the [User Interface] into independent, reusable pieces, and think about each piece in isolation." _from [ReactJS](https://reactjs.org/docs/components-and-props.html)_
 {: .notice--info}
 
 If you run this is an emulator, you will see a very simple screen that says "Hello, world!" (or anything else that you may have written).
@@ -230,16 +230,69 @@ This is actually not the correct way of doing it, but we'll do it like this for 
 {: .notice--info}
 
 ## Exercise 4
-**TLDR;** Style the rest of the Dashboard.
+**TLDR;** Style the Greeting and add functionality.
 {: .notice}
 
-Let's continue finishing up the Dashboard. Now that we did one part, the rest is pretty similar.
+Let's continue finishing up the Dashboard. Now that we did one part, the rest should be similar. 
+
+1. The greeting is simple, just a "hello" and the user's name with the current date. But, we haven't configured anything regarding the database, so we're just gonna [hard code](https://www.reddit.com/r/ProgrammerHumor/comments/9lllxu/hard_coding/) it for now, same with the date. You can write whatever text you want along with the date. We will make it work us by the end of this exercise.
+2. Notice that the greeting on the app does not have background itself, it is placed on top of the background of the whole screen. For this we would need to style the outermost `View`. Create a new styling in the `styles` object for this, to keep everything organized.
+* backgroundColor: '#0c0b0b'
+3. Also, this greeting has some whitespace around it, so add padding to the `View` that wraps it.
+4. Style the greeting `Text` to actually see the text (hint: use `fontColor`), while increasing its font size.
+5. 
 
 
 ## Exercise 5
+**TLDR;** Make the style skeleton of leaderboard and events.
+{: .notice}
+
+This and the following "blocks" have a similar style, so we can take this into our advantage and reduce the amount of code that we write.
+
+The rest of the screen, because it doesn't have any functionality *yet* (even in the most updated version), is simpler to code up since we only have to worry about styling for the most part.
+
+## Exercise 6
+**TLDR;** Finishing the rest of the screen.
+{: .notice}
+
+1. Add styling for **Committees** to make it have rounded corners, centered, and bold. Take into account the styles for its `View` vs `Text`.
+* backgroundColor: '#21252b'
+* borderRadius: 10
+* padding: '3%'
+* margin: '3%'
+
+    Generally, style for specific stuff, such as fontSize, color, and centering lies on the inner tags of the `View`. The background styling, such as backgroundColor, vertical spacing, and direction (making stuff in columns) lies on the `View` itself that wraps the specific content.
+    {: .notice--info}
+
+2. (Optional) Add `Text` for the "Coming Soon!" and its respective styling.
+3. Continue with the **Slack** styling. Here we will use a third-party module. You can style this the same you did for **Committees** using step 1.
+
+    <div class="notice--info" markdown="1">
+    **What is a module?**  
+    "Sometimes an app needs to access a platform API and React Native doesn't have a corresponding module yet. [...] If React Native doesn't support a native feature that you need, you should be able to build it yourself." *from React Native [iOS](https://facebook.github.io/react-native/docs/native-modules-ios.html) and [Android](https://facebook.github.io/react-native/docs/native-modules-android)*.  
+    
+    It is a library with Javascript code that serves the purpose of providing us with a feature, be it UI, animations, networks, widgets, etc. so that we only have to install it and then import it into whichever part of our app we want it in.
+    </div>
+
+    We want to use module called [FontAwesome](https://github.com/oblador/react-native-vector-icons). With it, we use the [FontAwesome database](https://oblador.github.io/react-native-vector-icons/) to look up corresponding icons, along with the [Icon component](https://github.com/oblador/react-native-vector-icons#icon-component) to customize its size, style, etc.
+
+4. Let's install the module as specified by their ReadMe installation instructions. The following line will install the module and update your package.json file (which is why you should commit and push these changes along with other changes you made to your repository).
+
+    ```
+    npm i react-native-vector-icons
+    //  ^ short for install
+    ```
+
+    **Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500) - from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install).
+    {: .notice--info}
+
+5. 
+
+By the way, I should mention by now that we will not be able to create the bottom bar until Part 2, which is atually what is next. 
+
+***  
+Solutions
 
 
-
-*** 
 References  
 &nbsp;&nbsp;&nbsp;&nbsp;[Aman Mittal](https://hackernoon.com/getting-started-with-react-native-in-2019-build-your-first-app-a41ebc0617e2)
