@@ -276,17 +276,21 @@ The rest of the screen, because it doesn't have any functionality *yet* (even in
 
     We want to use module called [FontAwesome](https://github.com/oblador/react-native-vector-icons). With it, we use the [FontAwesome database](https://oblador.github.io/react-native-vector-icons/) to look up corresponding icons, along with the [Icon component](https://github.com/oblador/react-native-vector-icons#icon-component) to customize its size, style, etc.
 
-4. Let's install the module as specified by their ReadMe installation instructions. The following line will install the module and update your package.json file (which is why you should commit and push these changes along with other changes you made to your repository).
+4. Let's install the module as specified by their README installation instructions. The following line will install the module and update your package.json file (which is why you should commit and push these changes along with other changes you made to your repository).
 
     ```
     npm i react-native-vector-icons
-    //  ^ short for install
+    //  ^ short for `install`
     ```
 
     **Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500) - from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install).
     {: .notice--info}
 
-5. 
+5. Now that we installed it, (1) you will see changed to the `package.json` file, specifying the added module, and (2) we can import it to our file and start using it.
+
+		```js
+
+		```
 
 By the way, I should mention by now that we will not be able to create the bottom bar until Part 2, which is atually what is next. 
 
