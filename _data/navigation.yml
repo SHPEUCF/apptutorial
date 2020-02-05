@@ -10,7 +10,11 @@ main:
 
 docs:
   - title: "Getting Started"
-    url: /getting-started/
+    children:
+      - title: "Intro"
+        url: /getting-started/intro
+      - title: "Setting Up"
+        url: /getting-started/setting-up
   - title: "Assignments"
     children:
       - title: "Part 1"

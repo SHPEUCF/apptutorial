@@ -1,6 +1,6 @@
 ---
-permalink: /getting-started/
-title: "Getting Started"
+permalink: /getting-started/setting-up
+title: "Setting Up"
 toc: true
 toc_sticky: true
 ---
