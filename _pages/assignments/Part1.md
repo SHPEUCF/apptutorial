@@ -13,10 +13,24 @@ In Part 1, we will start with making our first screen: the Dashboard. Here, mult
 ## Exercise 1
 **TLDR;** Create a react-native app and make a custom screen (this will be explained later).
 {: .notice}
-You can create a new react-native app with the command
+
+---
+SKIP! (2/5/2020) You can create a new react-native app with the command:
 ```
+npm install -g react-native-cli
 npx react-native init <nameOfProject>
 ```
+---
+
+For today, we are going to use expo. You can install it with the following command:
+```js
+npm install -g expo-cli
+expo init AwesomeProject
+cd AwesomeProject
+npm start # you can also use: expo start
+```
+> from [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
+
 This creates the project in the directory "nameOfProject." Inside, you will find multiple files/folders (you will find more, but we only care about a few):
 
 | App.js 		| File where app development takes place. Everything here is to be rendered. 					|
@@ -244,11 +258,9 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 		* We can't see any of the text (hint: use `color` to change the font color)  
 		Let's fix this by adding another style to the outermost `View`, `flex: 1`.
 		
-		What flex does is amazing, but complicated at first sight.
+		What [flex](https://facebook.github.io/react-native/docs/flexbox.html) does is amazing, but complicated at first sight.
 		{: .notice--info}
-
-4. 
-5. It does
+4. To be continued...
 
 
 ## Exercise 5
