@@ -44,7 +44,7 @@ This adds it to the dependency list of your project. You can check out the curre
     ```
 
     **What the heck is a function component?**  
-    A function component is another way of making a class component to render JSX elements just as we did in [Part 1, Exercise 1](./part-1#exercise-1). The main difference is that we can't modify states or lifecycle, which we haven't covered yet. The important thing is that they are simpler since we don't handle as much stuff, but because we don't use it in the Router we can take advantage of that. You can read more about functional vs class components [here](https://guide.freecodecamp.org/react-native/functional-vs-class-components/) or [go down a rabbit hole](https://www.robinwieruch.de/react-function-component). <sub>please note that we get this function component from the React.js library, which is why the second link may have different syntax from React Native</sub>
+    A function component is another way of making a class component to render JSX elements just as we did in [Part 1, Exercise 1](./part-1#exercise-1). The main difference is that we can't modify states or life cycle, which we haven't covered yet. The important thing is that they are simpler since we don't handle as much stuff, but because we don't use it in the Router we can take advantage of that. You can read more about functional vs class components [here](https://guide.freecodecamp.org/react-native/functional-vs-class-components/) or [go down a rabbit hole](https://www.robinwieruch.de/react-function-component). <sub>please note that we get this function component from the React.js library, which is why the second link may have different syntax from React Native</sub>
     {: .notice--info}
 
     For now make your function return the Router component as a paired tag element as shown below and we'll go ahead and expand on the implementation of the router in the next exercises.
@@ -94,13 +94,13 @@ For this exercise, follow the [documentation](https://github.com/aksonov/react-n
 ...
 <Stack
   key = "root">
-  <Scence>
+  <Scene>
 
 ...
 ```
 {::comment}Props/states have not been discussed before this point.{:/}
 
-Your Stack should have the follwing props values implemented:  
+Your Stack should have the following props values implemented:  
 ```js 
   key = "root"  
   tabs  

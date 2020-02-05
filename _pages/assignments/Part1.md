@@ -108,13 +108,13 @@ _Your emulator screen should look like this. Although this is pretty plain, we a
 **TLDR;** Style the title (or navigation bar) for the Dashboard screen to make it look like the SHPE app.
 {: .notice}
 
-Let's start filling in the screen you made in [Exercise 2](#exercise-2). Because we know what the Dashboard screen looks like, we can start placing these blocks in their respective areas (left, right, center...) and add some color or text styling to it. For the most part, we will be hardcoding stuff and will bring functionality by the end of Part 1.
+Let's start filling in the screen you made in [Exercise 2](#exercise-2). Because we know what the Dashboard screen looks like, we can start placing these blocks in their respective areas (left, right, center...) and add some color or text styling to it. For the most part, we will be hard-coding stuff and will bring functionality by the end of Part 1.
 
 Because we will use styling, we will need styles (!), the [CSS way](https://www.w3schools.com/Css/). React Native allows us to do that in two ways: inline or outside, just like with CSS and HTML.  
 For example, if I want to make the text blue, I can do the following: (I encourage you to test this code in App.js)
 ```js
 ...
-  <Text style={ {color: '#000080' /* navy blue */ } }>
+  <Text style={{ color: "#000080" /* navy blue */ }}>
 	  I am blue
   </Text>
 ...
@@ -122,15 +122,15 @@ For example, if I want to make the text blue, I can do the following: (I encoura
 However, this can get messy. What if I want to add more styling?
 ```js
 ...
-  <Text style={ {color: '#FF1493' /* deeppink */, fontWeight: 'bold', textAlign: 'center', padding: 10 } }>
+  <Text style={{ color: "#FF1493" /* deep-pink */, fontWeight: "bold", textAlign: "center", padding: 10 }}>
 	  I am pink, centered, bold, and have a padding of 10 pixels on all sides!
   </Text>
 ...
 ```
-**Note:** This is slighly different from CSS, if you are familiar with it. Check out fontWeight (instead of font-weight), for example. See [React Native Style](https://facebook.github.io/react-native/docs/style) for more.
+**Note:** This is slightly different from CSS, if you are familiar with it. Check out fontWeight (instead of font-weight), for example. See [React Native Style](https://facebook.github.io/react-native/docs/style) for more.
 {: .notice--info}
 
-And then imagine this being repeated for every other line of code that you write. Not only will you be duplicating styling most of time, but it will be way too clutered for you to be able to follow your code after you write it.
+And then imagine this being repeated for every other line of code that you write. Not only will you be duplicating styling most of time, but it will be way too cluttered for you to be able to follow your code after you write it.
 
 For this reason, we use a global object called *styles* (by convention) with the [StyleSheet](https://facebook.github.io/react-native/docs/stylesheet.html) component from react-native ([although there appears to be no real difference](https://stackoverflow.com/questions/38958888/react-native-what-is-the-benefit-of-using-stylesheet-vs-a-plain-object) if you use it or not. I won't use it here). With it, we have a global object that contains other objects, the individual styles that we want to apply to different parts of our code.
 
@@ -140,8 +140,8 @@ Let's start with the header (or navigation bar): **Dashboard**.
 For it, we will need a `View` and `Text` component, that's it.
 ```js
 ...
-  <View style={ ... }>
-    <Text style={ ... }></Text>
+  <View style = { ... }>
+    <Text style = { ... }></Text>
   </View>
 ...
 ```
@@ -161,27 +161,27 @@ To be able to do this, all background styling is placed in the `View` and specif
     ```js
     const styles = {
       tabBar: {
-        someStyle: 'value',
+        someStyle: "value",
         anotherStyle: 0
       },
       tabBarText: {
-        coolStyle: '#000000'
+        coolStyle: "#000000"
       }
     }
     ```
 
 3. We will need the following styles (and maybe a few more), you can start writing them in:
-* backgroundColor: '#21252b'
-* color: '#E0E6ED'
+* backgroundColor: "#21252b"
+* color: "#E0E6ED"
 * fontSize: 20
-* fontWeight: 'bold'
+* fontWeight: "bold"
 
 4. After writing the styling in the styles `const`, you can tell React Native to use the styling by placing it in the style for `View` and `Text`, as you would inline (*that's 4 styles for ya*).
 
     ```js
     ...
-      <View style={styles.tabBar}>
-        <Text style={styles.tabBarText}>Dashboard</Text>
+      <View style = { styles.tabBar }>
+        <Text style = { styles.tabBarText }>Dashboard</Text>
       </View>
     ...
     ```
@@ -197,7 +197,7 @@ To be able to do this, all background styling is placed in the `View` and specif
     The problem with setting a random number is that not all phones have the same screen size (if you didn't know), so it may look good on your phone/emulator, but it may be a total catastrophe on another phone. For this reason, we use the `Dimensions` component that [React Native provides](https://facebook.github.io/react-native/docs/dimensions.html#get) and use its `get()` method that returns an object with height and width, among other things. We then access it with the dot property.
 
     ```js
-    // Note that I'm not catching any of the values returned, this is bad.
+    // Note that I'm not catching any of the values returned, which is bad.
     // I just wanted to show you how to use the Dimensions component.
     // Method 1
     Dimensions.get('window').height;  // device height
@@ -208,7 +208,7 @@ To be able to do this, all background styling is placed in the `View` and specif
     // Method 2
     const dimension = Dimensions.get('window');
     dimension.height;  // device height;
-    dimension.width;   // devide width
+    dimension.width;   // device width
     ```
 
     Remember that, in order to use this React Native component, you *have* to import it the same way you did with `View` and `Text`, shown in line 3 of [Exercise 1](#exercise-1).
@@ -237,10 +237,18 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 
 1. The greeting is simple, just a "hello" and the user's name with the current date. But, we haven't configured anything regarding the database, so we're just gonna [hard code](https://www.reddit.com/r/ProgrammerHumor/comments/9lllxu/hard_coding/) it for now, same with the date. You can write whatever text you want along with the date. We will make it work us by the end of this exercise.
 2. Notice that the greeting on the app does not have background itself, it is placed on top of the background of the whole screen. For this we would need to style the outermost `View`. Create a new styling in the `styles` object for this, to keep everything organized.
-* backgroundColor: '#0c0b0b'
+* backgroundColor: "0c0b0b"
 3. Also, this greeting has some whitespace around it, so add padding to the `View` that wraps it.
-4. Style the greeting `Text` to actually see the text (hint: use `fontColor`), while increasing its font size.
-5. 
+		Two things happen when you do this:
+		* The background color only takes 1/4 of the page
+		* We can't see any of the text (hint: use `color` to change the font color)  
+		Let's fix this by adding another style to the outermost `View`, `flex: 1`.
+		
+		What flex does is amazing, but complicated at first sight.
+		{: .notice--info}
+
+4. 
+5. It does
 
 
 ## Exercise 5
@@ -249,7 +257,7 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 
 This and the following "blocks" have a similar style, so we can take this into our advantage and reduce the amount of code that we write.
 
-The rest of the screen, because it doesn't have any functionality *yet* (even in the most updated version), is simpler to code up since we only have to worry about styling for the most part.
+The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling for the most part.
 
 ## Exercise 6
 **TLDR;** Finishing the rest of the screen.
@@ -271,7 +279,7 @@ The rest of the screen, because it doesn't have any functionality *yet* (even in
     **What is a module?**  
     "Sometimes an app needs to access a platform API and React Native doesn't have a corresponding module yet. [...] If React Native doesn't support a native feature that you need, you should be able to build it yourself." *from React Native [iOS](https://facebook.github.io/react-native/docs/native-modules-ios.html) and [Android](https://facebook.github.io/react-native/docs/native-modules-android)*.  
     
-    It is a library with Javascript code that serves the purpose of providing us with a feature, be it UI, animations, networks, widgets, etc. so that we only have to install it and then import it into whichever part of our app we want it in.
+    It is a library with JavaScript code that serves the purpose of providing us with a feature, be it UI, animations, networks, widgets, etc. so that we only have to install it and then import it into whichever part of our app we want it in.
     </div>
 
     We want to use module called [FontAwesome](https://github.com/oblador/react-native-vector-icons). With it, we use the [FontAwesome database](https://oblador.github.io/react-native-vector-icons/) to look up corresponding icons, along with the [Icon component](https://github.com/oblador/react-native-vector-icons#icon-component) to customize its size, style, etc.
@@ -286,13 +294,13 @@ The rest of the screen, because it doesn't have any functionality *yet* (even in
     **Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500) - from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install).
     {: .notice--info}
 
-5. Now that we installed it, (1) you will see changed to the `package.json` file, specifying the added module, and (2) we can import it to our file and start using it.
+5. Now that we installed it, (1) you will see changes to the `package.json` file, specifying the added module, and (2) we can import it to our file and start using it.
 
 		```js
 
 		```
 
-By the way, I should mention by now that we will not be able to create the bottom bar until Part 2, which is atually what is next. 
+By the way, I should mention by now that we will not be able to create the bottom bar until [Part 2](/part-2), which is actually what is next. 
 
 ***  
 Solutions
