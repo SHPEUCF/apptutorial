@@ -57,7 +57,7 @@ Tutorial by the OG git people. Go here for everything git, from installing and b
 
 ### CS Topics
 * [Visualago](https://visualgo.net/en).  
-Visaulize data structures through animations.
+Visualize data structures through animations.
 
 * [Big-O Cheat Sheet](https://www.bigocheatsheet.com/).  
 Visualize and understand algorithm complexities.
