@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import React, { Component } from "react";
+import { Text, View } from "react-native";
 
 class App extends Component
 {
@@ -33,14 +33,14 @@ class App extends Component
 
 const styles = {
   tabBar: {
-    backgroundColor: '#21252b',
-    padding: '5%'
+    backgroundColor: "#21252b",
+    padding: "5%"
   },
   tabBarText: {
-    color: '#E0E6ED',
+    color: "#E0E6ED",
     fontSize: 20,
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold"
+	}
 }
 
 export default App;
