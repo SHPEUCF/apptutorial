@@ -3,7 +3,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "Tech Website"
+title: "Tech Committee"
 subtitle: "SHPE UCF"
 email: tech.shpeucf@gmail.com
 repository: "shpeucf/shpeucf.github.io"
@@ -50,6 +50,9 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/shpeucf/shpeucf.github.io"
+    - label: "Bugs"
+      icon: "fas fa-bug"
+      url: "https://github.com/shpeucf/shpeucf.github.io/issues"
 
 defaults:
   # _pages
