@@ -21,15 +21,15 @@ docs:
         url: /assignments/part-1
       - title: "Part 2"
         url: /assignments/part-2
-      - title: "Part 3"
-        url: /assignments/part-3
-      - title: "Part 4"
-        url: /assignments/part-4
   - title: "Extras"
     children:
       - title: "GitHub"
         url: //github.com/shpeucf
-      - title: "Archives"
-        url: /archives
       - title: "SHPE UCF Website"
         url: //shpeucf.com
+      - title: "NobodyHere"
+        url: //nobodyhere.com/justme/
+      - title: "myNoise"
+        url: //mynoise.net/
+      - title: "The Future"
+        url: //futuretimeline.net/index.htm#timeline
