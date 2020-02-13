@@ -14,13 +14,13 @@ In Part 1, we will start with making our first screen: the Dashboard. Here, mult
 **TLDR;** Create a react-native app and make a custom screen (this will be explained later).
 {: .notice}
 
----
-SKIP! (2/5/2020) You can create a new react-native app with the command:
+***
+SKIP! You can create a new react-native app with the command:
 ```
 npm install -g react-native-cli
 npx react-native init <nameOfProject>
 ```
----
+***
 
 For today, we are going to use expo. You can install it with the following command:
 ```js
@@ -33,12 +33,12 @@ npm start # you can also use: expo start
 
 This creates the project in the directory "nameOfProject." Inside, you will find multiple files/folders (you will find more, but we only care about a few):
 
-| App.js 		| File where app development takes place. Everything here is to be rendered. 					|
-| android 		| Android project 																								|
-| ios 			| Xcode project for iOS devices 																				|
-| index.js 		| Entry point (aka root file) for react-native app. This is where code begins execution.  |
-| node_modules | Folder with all dependencies being used on the project. 											|
-| package.json | Lists all dependencies installed for your project. 													|
+| App.js 		   | File where app development takes place. Everything here is to be rendered. 					   |
+| android 		 | Android project 																								                         |
+| ios 			   | Xcode project for iOS devices 																				                   |
+| index.js 		 | Entry point (aka root file) for react-native app. This is where code begins execution.  |
+| node_modules | Folder with all dependencies being used on the project. 											           |
+| package.json | Lists all dependencies installed for your project. 													           |
 
 If you don't know how to setup your emulator, check out [Getting Started](/getting-started).
 {: .notice--warning}
@@ -254,13 +254,62 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 * backgroundColor: "0c0b0b"
 3. Also, this greeting has some whitespace around it, so add padding to the `View` that wraps it.
 		Two things happen when you do this:
-		* The background color only takes 1/4 of the page
 		* We can't see any of the text (hint: use `color` to change the font color)  
+		* The background color only takes ~1/4 of the page
 		Let's fix this by adding another style to the outermost `View`, `flex: 1`.
 		
-		What [flex](https://facebook.github.io/react-native/docs/flexbox.html) does is amazing, but complicated at first sight.
-		{: .notice--info}
-4. To be continued...
+	<div class="notice--info" markdown="1">
+	**What [flex](https://facebook.github.io/react-native/docs/flexbox.html) does is amazing**, but complicated at first sight. "It makes the component flexible and it will be sized proportional to its flex value" *from [React Native](https://facebook.github.io/react-native/docs/layout-props.html#flex)*.
+
+	`flex: 1` will allow the code to expand the component relative the number given across its main axis. **What is the main axis**, you ask? It is vertical by default, but you can change it with other styling, such as `flex-direction`. For an in-depth explanation of flex, go [here](https://medium.com/the-react-native-log/understanding-react-native-flexbox-layout-7a528200afd4).
+
+	Furthermore, we can combine `flex` with other `flex`s to format the UI however we want. More on that later...
+	</div>
+
+Now that the greeting is where it should be, we can add functions to it and get the current date and do some cool stuff to change the greeting depending on *when* the user is logging in. For this, we will use [JavaScript objects](https://www.w3schools.com/js/js_objects.asp) - specifically the [Date object](https://javascript.info/date) to get the current date.
+
+We want to use this object and do some logic and be able to determine the appropriate greeting and display the date appropriately. This can't be done inside the `return` statement because we are also returning the JSX elements to display. We *could* do it in the `render()` function, but this is bad practice. The best way to do this, is to create a separate function inside the `Dashboard` class.
+
+We have different options for the class; it can return:
+<ol type="a">
+	<li>the current date or time in a specified format,</li>
+	<li>an object with the current date and custom text, or</li>
+	<li><strong>JSX elements displaying the greeting how we want it</strong>.</li>
+</ol>
+
+We choose **c**, since it is the simplest solution. Otherwise, with **a** or **b**, `render()` would need to take care of the styling and formatting of the text. By writing a function that takes care of everything, it simplifies the code in the render function, because we would only need to call the function inside the render's return statement.
+
+By the way, you are already familiar with react native functions, since we've used `render()` everywhere (although they are [slightly different from JavaScript](https://www.w3schools.com/js/js_functions.asp)).
+
+1. Create a function with a name that will let your future-self (or coworkers) know what the function name, such as `generateGreeting() {}` or `greeting() {}`.
+2. Inside this function we will have the functionality to get the date and time. For this we need an instance of the [Date object](https://javascript.info/date), as `const date = new Date();`. We create it as a constant so that we (or someone else) don't change its value later on.
+
+3. Create additional variables (for readability) to save the current day, month, and time. Checkout all the available functions for the Date object [here](https://www.tutorialspoint.com/javascript/javascript_date_object.htm). The day and month will be used directly to display text, while `time` will be used for the personalized greeting, depending if the user is opening the application in the morning or afternoon - how?
+
+	![Doggo](https://media.giphy.com/media/FnsbzAybylCs8/giphy.gif)  
+	*Adding a picture here because there's too much white, lifeless text*.
+	{: style="text-align: center"}
+
+4. Using the time, determine the appropriate greeting, i.e., "Good morning", "Good evening", "Buenas noches"... you decide. This will be done using branches, where you are free to use [if..else](https://www.w3schools.com/js/js_if_else.asp) branches or the [ternary operator](https://www.thoughtco.com/javascript-by-example-use-of-the-ternary-operator-2037394), which work the same way as in C or Java (and many other programming languages). You can save this greeting in a separate variable to easily access later when returning the elements.
+
+	There's a problem right now that you may not have noticed if you didn't read through the documentation of the Date object. Right now the function to get the current month returns a number from 0 to 11, not the actual month string.
+	
+	In order to get and display the month by name, we need to use an array of months, then index it with the value returned by `.getMonth()`. That is, an array with indices ["January", "February", ..., "December"].
+
+5. Let's finally return the JSX elements, since we have everything we need to display it on the screen. Just like in `render()`, return a main `View` component with what you want inside, some `Text`. This text should display the customized greeting and today's day and month.
+
+6. Now that we're done, we can call this function render function inside the render function inside the `View` where we had previous hard-coded the greeting. We can call this function by placing it inside curly braces `{}` so that react native knows we're going to be using JavaScript. That is, we have something like:
+
+	```
+	<View style = { ... }>
+	  { this.myFunction() }
+	</View>
+	```
+
+	**What is** `this` **and what is it doing in my code?** *The simplified version*.
+	{: .notice-info}
+
+If you rebuild your emulator, you will see that the greeting is displayed correctly, but the styling is off. That's because we didn't actually add any styling to the `Text` in our greeting function. You can use the same styling that you used before, so extract this and place in the `View` or `Text` of the return function for `greeting()`.
 
 
 ## Exercise 5
@@ -269,17 +318,17 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 
 This and the following "blocks" have a similar style, so we can take this into our advantage and reduce the amount of code that we write.
 
-The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling for the most part.
+The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling, for the most part.
 
 ## Exercise 6
 **TLDR;** Finishing the rest of the screen.
 {: .notice}
 
 1. Add styling for **Committees** to make it have rounded corners, centered, and bold. Take into account the styles for its `View` vs `Text`.
-* backgroundColor: '#21252b'
+* backgroundColor: "#21252b"
 * borderRadius: 10
-* padding: '3%'
-* margin: '3%'
+* padding: "3%"
+* margin: "3%"
 
     Generally, style for specific stuff, such as fontSize, color, and centering lies on the inner tags of the `View`. The background styling, such as backgroundColor, vertical spacing, and direction (making stuff in columns) lies on the `View` itself that wraps the specific content.
     {: .notice--info}
@@ -312,11 +361,10 @@ The rest of the screen, because it doesn't have any functionality *yet* (~~even 
 
 		```
 
-By the way, I should mention by now that we will not be able to create the bottom bar until [Part 2](/part-2), which is actually what is next. 
+By the way, I should mention by now that we will not be able to create the bottom bar until [Part 2](/part-2), which is actually what is next, woo!
 
 ***  
-Solutions
-
+[Solutions](https://github.com/SHPEUCF/shpeucf.github.io/tree/master/solutions)... encoded!
 
 References  
 &nbsp;&nbsp;&nbsp;&nbsp;[Aman Mittal](https://hackernoon.com/getting-started-with-react-native-in-2019-build-your-first-app-a41ebc0617e2)

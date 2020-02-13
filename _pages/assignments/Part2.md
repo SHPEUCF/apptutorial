@@ -182,5 +182,5 @@ console.disableYellowBox = true;
 </div>
 
 
----
-Solutions
+***
+[Solutions](https://github.com/SHPEUCF/shpeucf.github.io/tree/master/solutions)... encoded!
