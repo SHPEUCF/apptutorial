@@ -14,22 +14,21 @@ In Part 1, we will start with making our first screen: the Dashboard. Here, mult
 **TLDR;** Create a react-native app and make a custom screen (this will be explained later).
 {: .notice}
 
-***
-SKIP! You can create a new react-native app with the command:
+To build and run your application using node:
+You can create a new react-native app with the command:
 ```
-npm install -g react-native-cli
 npx react-native init <nameOfProject>
 ```
-***
+> from [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
 
-For today, we are going to use expo. You can install it with the following command:
-```js
-npm install -g expo-cli
-expo init AwesomeProject
-cd AwesomeProject
-npm start # you can also use: expo start
+To build and run your application using expo, install it with the following command:
+```
+expo init <nameOfProject>
 ```
 > from [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
+
+**Please make sure that you have your environment set-up; that is, you installed node, an emulator (iOS or Android), and react-native. Double check that you have met these requirements by going to [Getting Started](/getting-started).**
+{: .notice--danger}
 
 This creates the project in the directory "nameOfProject." Inside, you will find multiple files/folders (you will find more, but we only care about a few):
 
@@ -43,12 +42,18 @@ This creates the project in the directory "nameOfProject." Inside, you will find
 If you don't know how to setup your emulator, check out [Getting Started](/getting-started).
 {: .notice--warning}
 
-Run your emulator to see what react-native cli made. Once there, you can edit `App.js` to have your own custom screen. However, it would be better to start from scratch, so delete the contents of `App.js`. The reason for this is that the project creator implements code differently than how we code our app. The general structure of files is the following, lets break it down.
+Run your emulator to see what react-native (or expo) made.
+
+| Android                          | iOS                           | Expo                              |
+|----------------------------------|-------------------------------|-----------------------------------|
+| ``` react-native run-android ``` | ``` react-native run-ios  ``` | ``` npm start # or expo start ``` |
+
+Once there, you can edit `App.js` to have your own custom screen. However, it would be better to start from scratch, so delete the contents of `App.js`. The reason for this is that the project creator implements code differently than how we code our app. Normally, this is how your JavaScript files will look like, lets break it down.
 
 ```js
-1  import React from 'react';
-2  import { Component } from 'react'; 
-3  import { View, Text } from 'react-native';
+1  import React from "react";
+2  import { Component } from "react"; 
+3  import { View, Text } from "react-native";
 4
 5  class App extends Component
 6  {
@@ -73,7 +78,7 @@ This is the general structure your files will have in react-native:
 We can have these statements in a single line, i.e.:
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 ```
 </div>
 
@@ -98,16 +103,19 @@ For the next exercises, let's build a screen similar to the Dashboard from the S
 Create a new file (it can be named whatever you want, although _Dashboard_ sounds nice) and use the same structure we did in [Exercise 1](#exercise-1).
 
 The Dashboard on the app is more complicated than what we made previously. This is where we have to use [React Native components](https://facebook.github.io/react-native/docs/activityindicator) - although we have already used two of them: `View` and `Text`.
-On the [React Native Docs](https://facebook.github.io/react-native/docs/activityindicator), you will see all components that are provided to us, which can be imported `from 'react-native'`, as [Exercise 1](#exercise-1) did in line 3.
+On the [React Native Docs](https://facebook.github.io/react-native/docs/activityindicator), you will see all components that are provided to us, which can be imported `from "react-native"`, as [Exercise 1](#exercise-1) did in line 3.
 
 Additionally, you will see that we have to include some styling to have the <span style="color: black">black</span>/<span style="color: yellow">yellow</span>/<span style="color: gray">gray</span> colors on the screen, but we should focus first on the functionality rather than the styling.
 
-Note that React Native requires you to wrap everything inside a parent `<View>` tag, since React can only return one element; e.g.,  
-`<View>`  
-&nbsp;&nbsp;`// everything...`  
-&nbsp;&nbsp;`// totally everything...`  
-`</View>`
-{: .notice--warning}
+<div class="notice--warning" markdown="1">
+Note that React Native requires you to wrap everything inside a parent `<View>` tag, since React can only return one element; e.g.,
+```js
+<View>
+  // everything...
+  // totally everything...
+</View>
+```
+</div>
 
 1. In App.js, start with making the header (You can remove what we did in Exercise 1). This only consists of a small `View` with bold text. Don't worry about making it bold right now.
 1. Then create another `Text` component with the Greeting, these can be hard-coded for now.
@@ -167,22 +175,22 @@ To be able to do this, all background styling is placed in the `View` and specif
 
 1. Create `styles` as a global constant at the end of App.js, right before the export statement.
 
-    A constant is a variable type, used in JavaScript, such as an `int` in C or Java, except that it cannot be changed after it is declared because it's a constant. In JavaScript (the language we use), variables are loosely-typed, meaning that we can assign anything to them, whereas `int`s only allow for integers. In JS, there's also `let` and `var`, check out more of this [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
-    {: .notice--info}
+	A constant is a variable type, used in JavaScript, such as an `int` in C or Java, except that it cannot be changed after it is declared because it's a constant. In JavaScript (the language we use), variables are loosely-typed, meaning that we can assign anything to them, whereas `int`s only allow for integers. In JS, there's also `let` and `var`, check out more of this [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
+	{: .notice--info}
 
 2. Inside this object, you can create the name of the styling you want to add. They can be named whatever you want. It will later be accessed using the [dot operator](https://www.w3schools.com/js/js_objects.asp) for objects, e.g. if I create a style called potato, then I can access its styling by writing `styles.potato`. However, it should be something that makes sense to you, such as *tabBar* and *tabBarText*.
 
-    ```js
-    const styles = {
-      tabBar: {
-        someStyle: "value",
-        anotherStyle: 0
-      },
-      tabBarText: {
-        coolStyle: "#000000"
-      }
-    }
-    ```
+	```js
+	const styles = {
+		tabBar: {
+			someStyle: "value",
+			anotherStyle: 0
+		},
+		tabBarText: {
+			coolStyle: "#000000"
+		}
+	}
+	```
 
 3. We will need the following styles (and maybe a few more), you can start writing them in:
 * backgroundColor: "#21252b"
@@ -192,47 +200,47 @@ To be able to do this, all background styling is placed in the `View` and specif
 
 4. After writing the styling in the styles `const`, you can tell React Native to use the styling by placing it in the style for `View` and `Text`, as you would inline (*that's 4 styles for ya*).
 
-    ```js
-    ...
-      <View style = { styles.tabBar }>
-        <Text style = { styles.tabBarText }>Dashboard</Text>
-      </View>
-    ...
-    ```
+	```js
+	...
+		<View style = { styles.tabBar }>
+			<Text style = { styles.tabBarText }>Dashboard</Text>
+		</View>
+	...
+	```
 
-    Notice how this time we only used one set of curly braces `{}` to apply styling. And how we "call" it by accessing the `styles` global constant we made at the bottom of the file. This is much cleaner than writing styling inline!
+	Notice how this time we only used one set of curly braces `{}` to apply styling. And how we "call" it by accessing the `styles` global constant we made at the bottom of the file. This is much cleaner than writing styling inline!
 
-    If you have your emulator running, you will see the screen change as you save your file (assuming you have [Fast Refresh](https://facebook.github.io/react-native/docs/fast-refresh) enabled, found in the newest version of react-native, or [Hot Reloading](https://facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html#hot-reloading) in older versions). Check out [Getting Started](/getting-started) if you're not sure how to enable it.
+	If you have your emulator running, you will see the screen change as you save your file (assuming you have [Fast Refresh](https://facebook.github.io/react-native/docs/fast-refresh) enabled, found in the newest version of react-native, or [Hot Reloading](https://facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html#hot-reloading) in older versions). Check out [Getting Started](/getting-started) if you're not sure how to enable it.
 
 5. However, if you check your screen, it doesn't look the same as the SHPE app, the title is all cramped up in the corner. We need to increase the space or size of this container.
 
-    We could use padding, but because we want a fixed size of this bar, not just whitespace, we use the [`height` style](https://developer.mozilla.org/en-US/docs/Web/CSS/height), which only requires a number.
+	We could use padding, but because we want a fixed size of this bar, not just whitespace, we use the [`height` style](https://developer.mozilla.org/en-US/docs/Web/CSS/height), which only requires a number.
 
-    The problem with setting a random number is that not all phones have the same screen size (if you didn't know), so it may look good on your phone/emulator, but it may be a total catastrophe on another phone. For this reason, we use the `Dimensions` component that [React Native provides](https://facebook.github.io/react-native/docs/dimensions.html#get) and use its `get()` method that returns an object with height and width, among other things. We then access it with the dot property.
+	The problem with setting a random number is that not all phones have the same screen size (if you didn't know), so it may look good on your phone/emulator, but it may be a total catastrophe on another phone. For this reason, we use the `Dimensions` component that [React Native provides](https://facebook.github.io/react-native/docs/dimensions.html#get) and use its `get()` method that returns an object with height and width, among other things. We then access it with the dot property.
 
-    ```js
-    // Note that I'm not catching any of the values returned, which is bad.
-    // I just wanted to show you how to use the Dimensions component.
-    // Method 1
-    Dimensions.get('window').height;  // device height
-    Dimensions.get('window').width;   // device width
+	```js
+	// Note that I'm not catching any of the values returned, which is bad.
+	// I just wanted to show you how to use the Dimensions component.
+	// Method 1
+	Dimensions.get("window").height;  // device height
+	Dimensions.get("window").width;   // device width
 
-    // Or to only call get() once, if you're planning on
-    // using it multiple times:
-    // Method 2
-    const dimension = Dimensions.get('window');
-    dimension.height;  // device height;
-    dimension.width;   // device width
-    ```
+	// Or to only call get() once, if you're planning on
+	// using it multiple times:
+	// Method 2
+	const dimension = Dimensions.get("window");
+	dimension.height;  // device height;
+	dimension.width;   // device width
+	```
 
-    Remember that, in order to use this React Native component, you *have* to import it the same way you did with `View` and `Text`, shown in line 3 of [Exercise 1](#exercise-1).
-    {: .notice--warning}
-  
-    We generally use the second "method" and set `dimension` as a global constant. Anyway, now that we have the height, we can scale it by any constant, which happens to be 0.1 for the navigation bar in the SHPE app - but you can set it to whatever you want, since it's your app!
+	Remember that, in order to use this React Native component, you *have* to import it the same way you did with `View` and `Text`, shown in line 3 of [Exercise 1](#exercise-1).
+	{: .notice--warning}
 
-    ```js
-    height: dimension.height * 0.1
-    ```
+	We generally use the second "method" and set `dimension` as a global constant. Anyway, now that we have the height, we can scale it by any constant, which happens to be 0.1 for the navigation bar in the SHPE app - but you can set it to whatever you want, since it's your app!
+
+	```js
+	height: dimension.height * 0.1
+	```
 
 6. But even then, the title is too close to the left. Now we can use padding. You can choose whatever number you like, we used `"5%"` to make sure it respected each device's width. Check out CSS padding [here](https://www.w3schools.com/csS/css_padding.asp) and React Native docs for padding [here](https://facebook.github.io/react-native/docs/0.36/layout-props#paddingleft).
 
@@ -253,10 +261,10 @@ Let's continue finishing up the Dashboard. Now that we did one part, the rest sh
 2. Notice that the greeting on the app does not have background itself, it is placed on top of the background of the whole screen. For this we would need to style the outermost `View`. Create a new styling in the `styles` object for this, to keep everything organized.
 * backgroundColor: "0c0b0b"
 3. Also, this greeting has some whitespace around it, so add padding to the `View` that wraps it.
-		Two things happen when you do this:
-		* We can't see any of the text (hint: use `color` to change the font color)  
-		* The background color only takes ~1/4 of the page
-		Let's fix this by adding another style to the outermost `View`, `flex: 1`.
+	Two things happen when you do this:
+	* We can't see any of the text (hint: use `color` to change the font color)  
+	* The background color only takes ~1/4 of the page
+	Let's fix this by adding another style to the outermost `View`, `flex: 1`.
 		
 	<div class="notice--info" markdown="1">
 	**What [flex](https://facebook.github.io/react-native/docs/flexbox.html) does is amazing**, but complicated at first sight. "It makes the component flexible and it will be sized proportional to its flex value" *from [React Native](https://facebook.github.io/react-native/docs/layout-props.html#flex)*.
@@ -300,25 +308,28 @@ By the way, you are already familiar with react native functions, since we've us
 
 6. Now that we're done, we can call this function render function inside the render function inside the `View` where we had previous hard-coded the greeting. We can call this function by placing it inside curly braces `{}` so that react native knows we're going to be using JavaScript. That is, we have something like:
 
-	```
+	```js
 	<View style = { ... }>
 	  { this.myFunction() }
 	</View>
 	```
 
 	**What is** `this` **and what is it doing in my code?** *The simplified version*.
+	We will go more in-depth later on.
 	{: .notice-info}
 
-If you rebuild your emulator, you will see that the greeting is displayed correctly, but the styling is off. That's because we didn't actually add any styling to the `Text` in our greeting function. You can use the same styling that you used before, so extract this and place in the `View` or `Text` of the return function for `greeting()`.
-
+If you rebuild your emulator, you will see that the greeting is displayed correctly, but the styling is off. That's because we didn't actually add any styling to the `Text` in our greeting function. You can use the same styling that you used before, so extract that styling and place it in the `View` or `Text` of the return function for `greeting()`.
 
 ## Exercise 5
+**Let's skip Exercise 5 for today**.
+{: .notice}
+<!-- ## Exercise 5
 **TLDR;** Make the style skeleton of leaderboard and events.
 {: .notice}
 
 This and the following "blocks" have a similar style, so we can take this into our advantage and reduce the amount of code that we write.
 
-The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling, for the most part.
+The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling, for the most part. -->
 
 ## Exercise 6
 **TLDR;** Finishing the rest of the screen.
@@ -330,36 +341,50 @@ The rest of the screen, because it doesn't have any functionality *yet* (~~even 
 * padding: "3%"
 * margin: "3%"
 
-    Generally, style for specific stuff, such as fontSize, color, and centering lies on the inner tags of the `View`. The background styling, such as backgroundColor, vertical spacing, and direction (making stuff in columns) lies on the `View` itself that wraps the specific content.
-    {: .notice--info}
+	Generally, style for specific stuff, such as fontSize, color, and centering lies on the inner tags of the `View`. The background styling, such as backgroundColor, vertical spacing, and direction (making stuff in columns) lies on the `View` itself that wraps the specific content.
+	{: .notice--info}
 
 2. (Optional) Add `Text` for the "Coming Soon!" and its respective styling.
 3. Continue with the **Slack** styling. Here we will use a third-party module. You can style this the same you did for **Committees** using step 1.
 
-    <div class="notice--info" markdown="1">
-    **What is a module?**  
-    "Sometimes an app needs to access a platform API and React Native doesn't have a corresponding module yet. [...] If React Native doesn't support a native feature that you need, you should be able to build it yourself." *from React Native [iOS](https://facebook.github.io/react-native/docs/native-modules-ios.html) and [Android](https://facebook.github.io/react-native/docs/native-modules-android)*.  
-    
-    It is a library with JavaScript code that serves the purpose of providing us with a feature, be it UI, animations, networks, widgets, etc. so that we only have to install it and then import it into whichever part of our app we want it in.
-    </div>
+	<div class="notice--info" markdown="1">
+	**What is a module?**  
+	"Sometimes an app needs to access a platform API and React Native doesn't have a corresponding module yet. [...] If React Native doesn't support a native feature that you need, you should be able to build it yourself." *from React Native [iOS](https://facebook.github.io/react-native/docs/native-modules-ios.html) and [Android](https://facebook.github.io/react-native/docs/native-modules-android)*.  
+	
+	It is a library with JavaScript code that serves the purpose of providing us with a feature, be it UI, animations, networks, widgets, etc. so that we only have to install it and then import it into whichever part of our app we want it in.
+	</div>
 
-    We want to use module called [FontAwesome](https://github.com/oblador/react-native-vector-icons). With it, we use the [FontAwesome database](https://oblador.github.io/react-native-vector-icons/) to look up corresponding icons, along with the [Icon component](https://github.com/oblador/react-native-vector-icons#icon-component) to customize its size, style, etc.
+	We want to use module called [FontAwesome](https://github.com/oblador/react-native-vector-icons). With it, we use the [FontAwesome database](https://oblador.github.io/react-native-vector-icons/) to look up corresponding icons, along with the [Icon component](https://github.com/oblador/react-native-vector-icons#icon-component) to customize its size, style, etc.
 
 4. Let's install the module as specified by their README installation instructions. The following line will install the module and update your package.json file (which is why you should commit and push these changes along with other changes you made to your repository).
 
-    ```
-    npm i react-native-vector-icons
-    //  ^ short for `install`
-    ```
+	```
+	npm i react-native-vector-icons
+	//  ^ short for `install`
+	```
 
-    **Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500) - from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install).
-    {: .notice--info}
+	**Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500) - from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install).
+	{: .notice--info}
 
-5. Now that we installed it, (1) you will see changes to the `package.json` file, specifying the added module, and (2) we can import it to our file and start using it.
+5. Now that we installed it, (1) you will see changes to the `package.json` file, specifying the added module and (2) we can import it to our file and start using it.
 
-		```js
+	```js
+	import Ionicons from "react-native-vector-icons/Ionicons";
+	```
 
-		```
+6. Let's actually use it now. Looking at the syntax from the [repo](https://github.com/oblador/react-native-vector-icons#icon-component), we can pass in **props** to the Icon component to change how it looks - which is the main thing we care about with icons.
+
+	**What are props and why should I care?**
+	You shouldn't, yet here we are.
+	{: .notice--info}
+
+7. Using the [database](https://oblador.github.io/react-native-vector-icons/), select the icons you want to display by setting a name. I encourage you to play with the module and use different icons, changing their color and size. Later on we will use these icons to simulate a button, pretty cool right?
+
+	You will also notice other types of icons in the database, but because you imported `"Ionicons"`, you can only use those. I wonder if you could import [multiple icon sets](https://github.com/oblador/react-native-vector-icons#bundled-icon-sets)...
+
+Now that you imported and inserted an icon into Dashboard, let's center it and do all sorts of other cool stuff.
+
+1. 
 
 By the way, I should mention by now that we will not be able to create the bottom bar until [Part 2](/part-2), which is actually what is next, woo!
 
