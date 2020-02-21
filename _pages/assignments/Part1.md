@@ -136,7 +136,7 @@ Because we will use styling, we will need styles (!), the [CSS way](https://www.
 For example, if I want to make the text blue, I can do the following: (I encourage you to test this code in App.js)
 ```js
 ...
-  <Text style={{ color: "#000080" /* navy blue */ }}>
+  <Text style = { { color: "#000080" /* navy blue */ } }>
 	  I am blue
   </Text>
 ...
@@ -144,7 +144,7 @@ For example, if I want to make the text blue, I can do the following: (I encoura
 However, this can get messy. What if I want to add more styling?
 ```js
 ...
-  <Text style={{ color: "#FF1493" /* deep-pink */, fontWeight: "bold", textAlign: "center", padding: 10 }}>
+  <Text style = { { color: "#FF1493" /* deep-pink */, fontWeight: "bold", textAlign: "center", padding: 10 } }>
 	  I am pink, centered, bold, and have a padding of 10 pixels on all sides!
   </Text>
 ...
