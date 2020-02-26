@@ -38,6 +38,7 @@ This creates the project in the directory "nameOfProject." Inside, you will find
 | index.js 		 | Entry point (aka root file) for react-native app. This is where code begins execution.  |
 | node_modules | Folder with all dependencies being used on the project. 											           |
 | package.json | Lists all dependencies installed for your project. 													           |
+> from [Aman Mittal](https://hackernoon.com/getting-started-with-react-native-in-2019-build-your-first-app-a41ebc0617e2)
 
 If you don't know how to setup your emulator, check out [Getting Started](/getting-started).
 {: .notice--warning}
@@ -258,8 +259,10 @@ This is actually not the correct way of doing it, but we'll do it like this for 
 Let's continue finishing up the Dashboard. Now that we did one part, the rest should be similar. 
 
 1. The greeting is simple, just a "hello" and the user's name with the current date. But, we haven't configured anything regarding the database, so we're just gonna [hard code](https://www.reddit.com/r/ProgrammerHumor/comments/9lllxu/hard_coding/) it for now, same with the date. You can write whatever text you want along with the date. We will make it work us by the end of this exercise.
+
 2. Notice that the greeting on the app does not have background itself, it is placed on top of the background of the whole screen. For this we would need to style the outermost `View`. Create a new styling in the `styles` object for this, to keep everything organized.
 * backgroundColor: "0c0b0b"
+
 3. Also, this greeting has some whitespace around it, so add padding to the `View` that wraps it.
 	Two things happen when you do this:
 	* We can't see any of the text (hint: use `color` to change the font color)  
@@ -313,26 +316,46 @@ By the way, you are already familiar with react native functions, since we've us
 	  { this.myFunction() }
 	</View>
 	```
+	<div markdown="1" class="notice--info">
+	**What is** `this` **and what is it doing in my code?** *The simplified version*.  
+	If you have ever coded on Java, you might have seen `this` already, but it's different in JavaScript. Here, it refers to the object it belongs to and it is defined differently depending on where it is used. In this case, since it's called in a component inside the Dashboard class, we have to tell React Native that the function is defined in the same context we are in. Otherwise it defaults to the global (window) constant, which results in an error because the function is defined inside our class. You can try it out if you want: Define a function outside of the class with the same name and you will be able to call the two different functions with `this`.
 
-	**What is** `this` **and what is it doing in my code?** *The simplified version*.
-	We will go more in-depth later on.
-	{: .notice-info}
+	We will go more in-depth later on, but if you really want to understand it, you can read more on it [here](https://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/).
+	</div>
 
 If you rebuild your emulator, you will see that the greeting is displayed correctly, but the styling is off. That's because we didn't actually add any styling to the `Text` in our greeting function. You can use the same styling that you used before, so extract that styling and place it in the `View` or `Text` of the return function for `greeting()`.
 
 ## Exercise 5
-**Let's skip Exercise 5 for today**.
-{: .notice}
-<!-- ## Exercise 5
 **TLDR;** Make the style skeleton of leaderboard and events.
 {: .notice}
 
 This and the following "blocks" have a similar style, so we can take this into our advantage and reduce the amount of code that we write.
 
-The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ **it has been included in version 1.1**, which was released January 22, 2020), is simpler to code up since we only have to worry about styling, for the most part. -->
+The rest of the screen, because it doesn't have any functionality *yet* (~~even in the most updated version~~ *it has been included in version 1.1*, which was released January 22, 2020), is simpler to code up since we only have to worry about styling, for the most part.
+
+1. To fit the most content, the leaderboard and events are split in two columns, the first column being leaderboard. In order to do this, wrap the individual **Leaderboard** and **Events** in another `View`.
+
+2. This `View` will allow us to use the flex again! [I hope you remember it](https://reactnative.dev/docs/flexbox) from the previous exercise... Anyway, [flexDirection](https://reactnative.dev/docs/flexbox#flex-direction) permits us to modify the layout of our screen. Add the style with a value that will display it as columns, which one would that be? (There are some very neat graphics on its docs).
+
+	Remember that you should always use the `styles` object to make your code more readable.
+	{: .notice--warning}
+
+3. Next, style the titles of Leaderboard and Events inside their individual columns. You need make them bold and increase the their size. This can be done with `fontWeight` and `fontSize`, respectively. More on `Text` styling can be found [here](https://reactnative.dev/docs/text#style).
+
+4. Add some `Text` inside each column as to simulate data on the app. Don't worry about adding events or users to the leaderboard, this will come later on.
+
+5. Here, you will see that both columns are pretty ugly. Let's style each column so that we can tell them apart. For this, we style the individual `View`s that wrap each column. Create a style to be applied to both called `dataContainer` (or whichever other name you want).
+
+6. Here, you will set the `flexDirection` back to column, add some [padding](https://www.w3schools.com/csS/css_padding.asp) (so that the text isn't hugging it's borders), and align the items to the center with [alignItems](https://reactnative.dev/docs/flexbox.html#align-items).
+
+6. However, it doesn't look that good. We should add a common styling (and call it `containerStyle`, for example) to the two columns so that they stand out from the rest of the screen. This is where most of styling is at. You will again align the items to the center, set the background color (`#21252b`), and set a radius (with `borderRadius`) so that we have nice, rounded corners.
+
+	To center it, you will again need to use `alignItems`, then increase its size with `fontSize`. Once again, the `Text` docs provide the [styles you can use here](https://reactnative.dev/docs/text#style).
+
+For more specific styling props, [check out the docs](https://reactnative.dev/docs/layout-props) and try to not get overwhelmed.
 
 ## Exercise 6
-**TLDR;** Finishing the rest of the screen.
+**TLDR;** Finishing the rest of the screen, almost.
 {: .notice}
 
 1. Add styling for **Committees** to make it have rounded corners, centered, and bold. Take into account the styles for its `View` vs `Text`.
@@ -373,23 +396,79 @@ The rest of the screen, because it doesn't have any functionality *yet* (~~even 
 	```
 
 6. Let's actually use it now. Looking at the syntax from the [repo](https://github.com/oblador/react-native-vector-icons#icon-component), we can pass in **props** to the Icon component to change how it looks - which is the main thing we care about with icons.
+	
+	<div markdown="1" class="notice--info">
+	**What are these *props* I keep hearing about?**
+	Props, or properties, is data that we pass into a component. Based on the component's definition, it will use the prop given and display it one way or another. You have used them many times before - `style` is one of them. They can be thought of as immutable, why?  
+	Let's think about it for a second: What would happen if you give some text the prop style of `color: "blue"`, but it returns text whose color is *[mikado](https://www.colorhexa.com/ffc40c)*..? You can learn more about it [here](https://codeburst.io/props-and-state-in-react-native-explained-in-simple-english-8ea73b1d224e).
 
-	**What are props and why should I care?**
-	You shouldn't, yet here we are.
-	{: .notice--info}
+	Its counterpart are **states** (as you may have read), but we won't go into this till later.
+	</div>
 
-7. Using the [database](https://oblador.github.io/react-native-vector-icons/), select the icons you want to display by setting a name. I encourage you to play with the module and use different icons, changing their color and size. Later on we will use these icons to simulate a button, pretty cool right?
+7. Using the [database](https://oblador.github.io/react-native-vector-icons/), select the icons you want to display by setting a name. I encourage you to play with the module and use different icons, changing their color, size, and adding props to it. Later on we will use these icons to simulate a button, pretty cool right?
 
 	You will also notice other types of icons in the database, but because you imported `"Ionicons"`, you can only use those. I wonder if you could import [multiple icon sets](https://github.com/oblador/react-native-vector-icons#bundled-icon-sets)...
 
-Now that you imported and inserted an icon into Dashboard, let's center it and do all sorts of other cool stuff.
+	```js
+	// Example
+	<Entypo size = { 125 } color = "red" name = "eye">
+	```
 
-1. 
+Now that you imported and inserted an icon into Dashboard, let's center it and do all sorts of other neat-o stuff.
+
+Finally, to center it, you may be thinking you need to styling again - and you are right. You should be able to do this by now. **Hint** <span style="color: #252A34">Add a center style to the parent view that is wrapping the Icon component.</span>
+
+Let's cut it off here and add a behavior to the icon on the next exercise... because it's too much so far.
+
+## Exercise 7
+**TLDR;** Adding an event to the icon.
+{: .notice}
+
+Now, let's make it behave as a button. In its documentation, the `Icon` component has an onPress prop which allows us to provide it a function to be triggered every time the user (you) presses the icon. When a function is small enough, you can place it inline as shown in [this example](https://reactnative.dev/docs/handling-touches#displaying-a-basic-button). A simple function we can add is the `alert()` function [from JavaScript](https://www.w3schools.com/jsref/met_win_alert.asp).
+
+```js
+...
+<View>
+  <EvilIcons
+    size = { 30 }
+    name = "sc-google-plus"
+    onPress = { () => alert("Google Plus is dead.") }
+  >
+</View>
+...
+```
+*Notice how the component properties were split in different lines as otherwise the line would be too long*.
+
+We want to use the icon to go to the Slack app, found on [shpeucf.slack.com](www.shpeucf.slack.com). For this, we have to use another component that will open up the link on the user's phone when the icon triggered. This magical component is [Linking](https://reactnative.dev/docs/linking.html#openurl), of which we will use the openURL **method**, along with other neat and complex stuff.
+
+If you look at the current SHPE app Dashboard.js (February 2020), you will see that the Icon uses the following.
+
+```js
+<Icon ... onPress = { () => Linking.openURL("https://www.shpeucf.slack.com") }>
+```
+
+Since it is a component and it *is* from react native, you also have to import (just like you did with dimensions).
+{: .notice--warning} 
+
+However, the problem with this approach is that it only opens the web browser on the requested link, not the Slack. A way we solve this is using **deep linking** (read the first part of [this article](https://arsfutura.co/magazine/deep-linking-in-react-native/) to learn more about it).
+
+To open the URL, we can use deep linking from the [Slack API](https://api.slack.com/reference/deep-linking) to directly open it in the Slack app.
+
+1. If you look at the API, you will see deep linking using `slack://`. Add the standard open link and test it.
+
+2. What's the issue with this? We are not actually, opening the SHPE UCF Slack workspace. Below it, you will see we can specify the workspace with a `TEAM_ID`. Use this link and test it. *FYI: The ID is `TC61JSPUZ`*.
+
+	Another issue with this is that the button behaves weirdly: If the app is on the phone, Slack will open; otherwise, it won't do anything. To prevent this from happening, we can use the `canOpenURL()`, which is an interesting function we may not be ready to deal with until we get to Part 6.
+
+	![Cat](https://i.imgur.com/YCOOrTz.jpg){: width="40%" .align-center "}
+	*[Cat](https://www.reddit.com/r/CatsStandingUp/comments/f7s4pj/cat/)*.
+	{: style="text-align: center"}
+	
+	In addition, this function works great for Android, but is a little troublesome for iOS (read the issues [here](https://reactnative.dev/docs/linking.html#canopenurl)), since we have to add some special stuff. I didn't want to waste your time doing this, just wanted to let you know of issues that you will run into with development, where oftentimes you will have to stop and continue with other parts.
+
+	For this reason, we can go back to opening in a webpage link and revisit this later on.
 
 By the way, I should mention by now that we will not be able to create the bottom bar until [Part 2](/part-2), which is actually what is next, woo!
 
 ***  
 [Solutions](https://github.com/SHPEUCF/shpeucf.github.io/tree/master/solutions)... encoded!
-
-References  
-&nbsp;&nbsp;&nbsp;&nbsp;[Aman Mittal](https://hackernoon.com/getting-started-with-react-native-in-2019-build-your-first-app-a41ebc0617e2)
