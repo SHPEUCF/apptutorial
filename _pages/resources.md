@@ -8,6 +8,9 @@ toc_sticky: true
 We give you these tutorials to use for your own learning experience to complement what we do in the meetings. However, it could be overwhelming to see how much stuff there is to learn and I do not want anyone to feel pressured to complete these tutorials. In fact, it is better if you don't, as you could fall in a tutorial rabbit hole and reduce your productivity. Use this as a guide or reference when you need external help and don't know where to look.
 
 ### JavaScript and React Native
+* [The Odin Project](https://www.theodinproject.com/)
+Open-source project-based learning to get you started and comfortable working with JavaScript and other frameworks or libraries you may encounter on your journey.
+
 * [Eloquent JavaScript](https://eloquentjavascript.net/).  
 Introduction to programming with JavaScript. It is an extensive book that covers the majority of JavaScript and goes from the most basic step (variables) to working with events and libraries.
 
