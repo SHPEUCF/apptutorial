@@ -566,7 +566,7 @@ For more specific styling props, [check out the docs](https://reactnative.dev/do
 	// this is used to link the libraries installed to your project, so that you can use the icons you want
 	```
 
-	At this point you should rebuild your emulator so that you can see the icons when we add them in the next steps.
+	At this point you should rebuild your emulator so that you can see the icons when we add them in the next steps. You will now get an error about a linking issue with React Native, but your app should still build without problems, so let's not worry about it for now.
 
 	**Note**: Previously, npm required to install with the flag `--save` in order to update the dependencies, yet it is done automatically since [node 5.0.0](https://blog.npmjs.org/post/161081169345/v500). *from [voithos on Stack Overflow](https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install)*
 	{: .notice--info}
