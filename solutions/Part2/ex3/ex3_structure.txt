@@ -1,0 +1,10 @@
+src
+├── Dashboard.js
+├── Events.js
+├── More.js
+├── Profile.js
+├── config
+│   └── Router.js
+└── ex3_structure.txt
+
+1 directory, 6 files
