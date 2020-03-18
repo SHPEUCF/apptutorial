@@ -6,7 +6,7 @@ class Profile extends Component {
 		return (
 			<View>
 			</View>
-		)
+		);
 	}
 }
 

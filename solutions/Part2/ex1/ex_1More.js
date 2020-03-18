@@ -6,7 +6,7 @@ class More extends Component {
 		return (
 			<View>
 			</View>
-		)
+		);
 	}
 }
 

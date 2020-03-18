@@ -6,7 +6,7 @@ class Events extends Component {
 		return (
 			<View>
 			</View>
-		)
+		);
 	}
 }
 
