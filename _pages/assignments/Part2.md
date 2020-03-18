@@ -12,7 +12,7 @@ It is assumed that the reader has some basic programming knowledge and is able t
 For reference, a link to the solutions can be found at the bottom of the page.
 </div>
 
-In Part 2, we will learn how to install additional libraries into our app. Specifically, we will install [react-native-router-flux](https://github.com/aksonov/react-native-router-flux) which is a library created to facilitate screen navigation. As shown on their GitHub, screen navigation is a way for us to connect screen togethers and be able to, well, _navigate_ through them! I have added their demo gif below.
+In Part 2, we will learn how to install additional libraries into our app. Specifically, we will install [react-native-router-flux](https://github.com/aksonov/react-native-router-flux), which is a library created to facilitate screen navigation. As shown on their GitHub, screen navigation is a way for us to connect screen togethers and be able to, well, _navigate_ through them! I have added their demo gif below.
 
 ![Screen navigation](https://user-images.githubusercontent.com/3681859/27937441-ef61d932-626b-11e7-885f-1db7dc74b32e.gif){: width="40%" .align-center}
 
@@ -47,7 +47,7 @@ This adds it to the dependency list of your project. You can check out the curre
 
 1. Let's create the router file, this houses the implementation of the library. We could create this file anywhere, but to avoid having 50 files all in the same place, let's organize stuff. Create an `src` (short for source) folder and add the previously created files (Events.js, Profile.js, More.js) to it.
 
-1. Inside this folder, create another folder called `config` (short for configuration), this is the folder that will contain `Router.js`, you can create it now as well.
+1. Inside this folder, create another folder called `config` (short for configuration), this is the folder that will contain `Router.js`, which you can create it now as well.
 
     This `Router.js` file will contain a function component that returns the Router component.
 
@@ -60,10 +60,10 @@ This adds it to the dependency list of your project. You can check out the curre
     ```
 
     **What the heck is a function component?**  
-    A function component is another way of making a class component to render JSX elements just as we did in [Part 1, Exercise 1](./part-1#exercise-1). The main difference is that we can't modify states or life cycle, which we haven't covered yet. The important thing is that they are simpler since we don't handle as much stuff, but because we don't use it in the Router we can take advantage of that. You can read more about functional vs class components [here](https://guide.freecodecamp.org/react-native/functional-vs-class-components/) or [go down a rabbit hole](https://www.robinwieruch.de/react-function-component). <sub>please note that we get this function component from the React.js library, which is why the second link may have different syntax from React Native</sub>
+    A function component is another way of making a class component to render JSX elements just as we did in [Part 1, Exercise 1](./part-1#exercise-1). The main difference is that we can't modify states or the life cycle, which we haven't covered yet. The important thing is that they are simpler since we don't handle as much stuff, but because we don't use complex stuff in the Router we can take advantage of that. You can read more about functional vs class components [here](https://guide.freecodecamp.org/react-native/functional-vs-class-components/) or [go down a rabbit hole](https://www.robinwieruch.de/react-function-component). <sub>please note that we get this function component from the React.js library, which is why the second link may have different syntax from React Native</sub>
     {: .notice--info}
 
-    For now make your function return the Router component as a paired tag element as shown below and we'll go ahead and expand on the implementation of the router in the next exercises.
+    For now, make your function return the Router component as a paired tag element as shown below and we'll go ahead and expand on the implementation of the router in the next exercises.
 
     ```js
     const RouterComponent = () => {
@@ -109,7 +109,7 @@ Wait, what the fork are scenes and stacks, again?
 The Stack for screen navigation can be thought of as a stack of papers, where each paper is a "deeper" screen (or `Scene`) we go into.
 </div>
 
-It should look like this:
+At the end, it should look like this:
 
 ```js
 <Router>
@@ -134,7 +134,7 @@ It should look like this:
 **Note**: Because we are calling the screens we created, it is important that the Router imports them from their respective files, e.g.:
 
 ```js
-// Assuming Router is in src/config and Events is in src/
+// Assuming Router.js is in src/config and Events is in src/
 import Events from "../Events.js";
 ```
 
@@ -143,16 +143,16 @@ You should also import the `Stack` and `Scene` components, and `ActionConst` sin
 
 The `key` prop in `Scene` allows us to go to that screen by using the router flux API. For example, if a scene key is `events`, we access that screen by using `Actions.events()`.
 
-The value "ActionConst.RESET" means that whenever a new scene is called within this stack, it will fully empty the current call stack and bring up the new scene without transitioning. We'll want to change the type value in other situations in the future.
+The value "ActionConst.RESET" means that whenever a new scene is called within this stack, it will fully empty the current call stack and bring up the new scene without transitioning. We'll want to change the type value in other situations in the future, but for now it's fine.
 
 The return statement for Router.js should kinda look like this:  
 ```js
 return (
   <Router>
-    <Stack>
-      <Scene/>
-      <Scene/>
-      <Scene/>
+    <Stack> // parent Stack
+      <Scene/> // for Events.js
+      <Scene/> // for Profile.js
+      <Scene/> // for More.js
     </Stack>
   </Router>
 );
@@ -215,9 +215,9 @@ However, the other screens we made are not that impressive, but don't worry, we 
 
 There are additional props that we didn't use before that lets us add styling and icons to each "tab," look at them [here](https://github.com/aksonov/react-native-router-flux/blob/master/docs/API.md#tabs-tabs-or-scene-tabs).
 
-1. Let's style the `Stack`, create a style for it, just like you did with `Dashboard.js`. It will have a backgroundColor (`#21252B`) and some padding.
+1. Let's style the `Stack`. Create a style for it, just like you did with `Dashboard.js`. It will have a backgroundColor (`#21252B`) and some padding.
 
-1. Place the newly created in the `Stack` prop `tabBarStyle`. Then add two other props, which will be set to the colors we want each individual tab to look like depending if it's being selected or not
+1. Place the newly created style in the `Stack` prop, `tabBarStyle`. Then add two other props, which will be set to the colors we want each individual tab to look like depending if it's being selected or not
 
     ```js
     // Example
@@ -227,7 +227,7 @@ There are additional props that we didn't use before that lets us add styling an
 
     ![Nav bar colors](../../assets/images/Part2/ex4_nav_bar_color.png){: width="40%" .align-center}
 
-1. Next, we want to add an icon to each `Scene` so that it looks nicer. Since we already worked with icons before, you should have an idea on how to work with them. Import the icon you want from `react-native-vector-icons` as you did before. (Remember the [available icon sets](https://github.com/oblador/react-native-vector-icons#bundled-icon-sets), the SHPE app uses Ionicons.)
+1. Next, we want to add an icon to each `Scene` so that it looks nicer. Since we already worked with icons before, you should have an idea on how to work with them. Import the icon you want from `react-native-vector-icons` as you did before. (Remember the [available icon sets](https://github.com/oblador/react-native-vector-icons#bundled-icon-sets) - the SHPE app uses Ionicons.)
 
 	For this, we use the [`tabBarIcon` prop](https://reactnavigation.org/docs/bottom-tab-navigator/#tabbaricon), which accepts a function with some predefined parameters:
 	* `focused` (implicitly defined in `Scene`s which tells React Native if the user is in a `Scene` or not),
@@ -250,7 +250,7 @@ There are additional props that we didn't use before that lets us add styling an
 	}
 	```
 
-	However, this adds more code the root stack, making it more cluttered. At this time, it would be better to create an additional function inside the `RouterComponent` functional component, before the `return` statement. This function will again receive the `focused` parameter that is being passed to `tabBarIcon`, which would end up much cleaner:
+	However, this adds more code the root stack, making it more cluttered. At this time, it would be better to create an additional function inside the `RouterComponent` functional component, before the `return` statement. This function will again receive the `focused` parameter that is being passed to `tabBarIcon`, and would end up much cleaner:
 
 	```js
 	tabBarIcon = { ({ focused }) => myFunction(focused) }
@@ -297,7 +297,7 @@ There are additional props that we didn't use before that lets us add styling an
 	{: .notice--info}
 
 	A couple of things to note:
-	* We pass `focused` but never use it. We need to use it so that the icons have different colors depending if the user is a certain screen or not, this will behave similarly to the activate and inactive tint.
+	* We pass `focused` but never use it. We need to use it so that the icons have different colors depending if the user is in a certain screen or not, this will behave similarly to the active and inactive tint.
 	* All tabs have the same icon, but they should all be different.
 
 Let's fix both of these issues.
@@ -331,14 +331,14 @@ Let's fix both of these issues.
 
 	</div>
 	</details>
-
+	<br />
 	Now, our color prop should check if `focused` is true. In case it is, use one color (`#FFC107`), else use another (`#FFF`).
 
 	```js
 	// Example
 	color = { focused ? "#FFC107" : "#FFF" }
 	//      ^ Notice that we wrap it in curly braces,
-	//        so that react native know we're inserting JS code
+	//        so that react native knows we're inserting JS code
 	```
 
 	On re-rendering your app, you will see the color of the icons change accordingly, however we still need to change the fact that they are all the same icons.
