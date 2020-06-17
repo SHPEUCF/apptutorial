@@ -24,12 +24,12 @@ docs:
   - title: "Extras"
     children:
       - title: "GitHub"
-        url: //github.com/shpeucf
+        url: https://github.com/shpeucf
       - title: "SHPE UCF Website"
-        url: //shpeucf.com
+        url: https://shpeucf.com
       - title: "NobodyHere"
-        url: //nobodyhere.com/justme/
+        url: https://nobodyhere.com/justme/
       - title: "myNoise"
-        url: //mynoise.net/
+        url: https://mynoise.net/
       - title: "The Future"
-        url: //futuretimeline.net/index.htm#timeline
+        url: http://futuretimeline.net/index.htm#timeline
