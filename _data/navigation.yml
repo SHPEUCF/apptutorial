@@ -23,6 +23,12 @@ docs:
         url: /assignments/part-2
       - title: "Part 3: Firebase"
         url: /assignments/part-3
+      - title: "Part 4: Registration UI"
+        url: /assignments/part-4
+      - title: "Part 5: Redux"
+        url: /assignments/part-5
+      - title: "Part 6: Grand Finale"
+        url: /assignments/part-6
   - title: "Extras"
     children:
       - title: "GitHub"
