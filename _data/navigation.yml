@@ -17,14 +17,16 @@ docs:
         url: /getting-started/setting-up
   - title: "Assignments"
     children:
-      - title: "Part 1"
+      - title: "Part 1: Dashboard"
         url: /assignments/part-1
-      - title: "Part 2"
+      - title: "Part 2: Router"
         url: /assignments/part-2
+      - title: "Part 3: Firebase"
+        url: /assignments/part-3
   - title: "Extras"
     children:
       - title: "GitHub"
-        url: https://github.com/shpeucf
+        url: https://github.com/SHPEUCF/apptutorial
       - title: "SHPE UCF Website"
         url: https://shpeucf.com
       - title: "NobodyHere"
