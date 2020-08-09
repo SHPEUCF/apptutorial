@@ -7,7 +7,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   Site for members to learn about react-native and all its features.
 logo: "/assets/images/shpe-logo.png"
 # masthead_title: "Tech Website"
-search: true
 timezone: America/New_York
 breadcrumbs: true
 
