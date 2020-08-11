@@ -1,5 +1,5 @@
 ---
-permalink: /getting-started/intro
+permalink: /intro
 title: "Intro"
 classes: wide
 ---

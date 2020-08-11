@@ -1,5 +1,5 @@
 ---
-permalink: /assignments/part-4
+permalink: /part-4
 title: "Part Four: More UI with Registration"
 toc: true
 toc_sticky: true

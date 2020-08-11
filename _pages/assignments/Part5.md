@@ -1,5 +1,5 @@
 ---
-permalink: /assignments/part-5
+permalink: /part-5
 title: "Part Five: The Tale of the Redux"
 toc: true
 toc_sticky: true

@@ -1,8 +1,9 @@
 ---
-permalink: /assignments/part-1
+permalink: /part-1
 title: "Part One: The Tale of the Dashboard"
 toc: true
 toc_sticky: true
+type: pages
 ---
 
 <div markdown="1" class="notice--primary">

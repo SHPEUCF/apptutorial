@@ -1,5 +1,5 @@
 ---
-permalink: /assignments/part-6
+permalink: /part-6
 title: "Part Six: It all comes down to This"
 toc: true
 toc_sticky: true

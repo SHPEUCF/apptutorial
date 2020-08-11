@@ -1,5 +1,5 @@
 ---
-permalink: /assignments/part-3
+permalink: /part-3
 title: "Part Three: Firing it up with the Base"
 toc: true
 toc_sticky: true

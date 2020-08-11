@@ -2,33 +2,33 @@ main:
   - title: "Home"
     url: /
   - title: "Guide"
-    url: /app-guide/
+    url: /guide
   - title: "Resources"
-    url: /resources/
+    url: /resources
   - title: "About"
-    url: /about/
+    url: /about
 
 docs:
   - title: "Getting Started"
     children:
       - title: "Intro"
-        url: /getting-started/intro
-      - title: "Setting Up"
-        url: /getting-started/setting-up
-  - title: "Assignments"
+        url: /intro
+      - title: "Environment"
+        url: /environment
+  - title: "Tutorial"
     children:
       - title: "Part 1: Dashboard"
-        url: /assignments/part-1
+        url: /part-1
       - title: "Part 2: Router"
-        url: /assignments/part-2
+        url: /part-2
       - title: "Part 3: Firebase"
-        url: /assignments/part-3
+        url: /part-3
       - title: "Part 4: Registration UI"
-        url: /assignments/part-4
+        url: /part-4
       - title: "Part 5: Redux"
-        url: /assignments/part-5
+        url: /part-5
       - title: "Part 6: Grand Finale"
-        url: /assignments/part-6
+        url: /part-6
   - title: "Extras"
     children:
       - title: "GitHub"

@@ -1,5 +1,5 @@
 ---
-permalink: /assignments/part-2
+permalink: /part-2
 title: "Part Two: The Router"
 toc: true
 toc_sticky: true
